@@ -104,6 +104,7 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
         <div class="w-full text-center" style="align-content: center">
             <?php
             if (!empty($mess) && $mess == 'Login successful.') {
+                echo $mess;
                 //header("refresh:1;url=" . str_replace("index.php", "", "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]") . "showExe.php");
                 include "showExe.php";
             } else {

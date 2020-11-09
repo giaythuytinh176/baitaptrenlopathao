@@ -22,10 +22,21 @@
         <th>3</th>
         <th>CGMD001851</th>
         <th>Lê Đức Tâm</th>
-        <th>https://github.com/giaythuytinh176/baitaptrenlopathao</th>
-        <th>https://github.com/giaythuytinh176/baitaptrenlopathao</th>
-        <th>https://github.com/giaythuytinh176/baitaptrenlopathao</th>
-        <th></th>
+        <th><a href="https://github.com/giaythuytinh176/baitaptrenlopathao">https://github.com/giaythuytinh176/baitaptrenlopathao</a>
+        </th>
+        <th><a href="https://github.com/giaythuytinh176/baitaptrenlopathao">https://github.com/giaythuytinh176/baitaptrenlopathao</a>
+        </th>
+        <th><a href="https://github.com/giaythuytinh176/baitaptrenlopathao">https://github.com/giaythuytinh176/baitaptrenlopathao</a>
+        </th>
+        <th>
+            <select>
+                <option value=""></option>
+                <option value="Dat">Dat</option>
+                <option value="binh thuong">binh thuong</option>
+                <option value="ko Dat">ko Dat</option>
+            </select>
+
+        </th>
     </tr>
 
 
