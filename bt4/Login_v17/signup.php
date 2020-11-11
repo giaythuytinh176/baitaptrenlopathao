@@ -185,9 +185,17 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $loadJs = loadJson();
-        foreach ($loadJs as $value) {
-            if ($username == $value[0]) {
+//        $loadJs = loadJson();
+//        foreach ($loadJs as $value) {
+//            if ($username == $value['username']) {
+//                $error = true;
+//                $mess = "Username existed.";
+//                break;
+//            }
+//        }
+        $loadDB = loadDB();
+        foreach ($loadDB as $value) {
+            if ($username == $value['username']) {
                 $error = true;
                 $mess = "Username existed.";
                 break;
@@ -199,7 +207,8 @@
         }
 
         if (!$error) {
-            saveToJson([$username, $password]);
+            //saveToJson(["username" =>$username, "password" => $password]);
+            insertToDB(["username" => $username, "password" => $password]);
             echo "Registered successfully!.";
         }
     }

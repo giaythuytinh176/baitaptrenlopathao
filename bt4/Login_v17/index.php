@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 ?>
 <!DOCTYPE html>
@@ -33,27 +34,50 @@ session_start();
 <body>
 <?php
 
+if (isset($_SESSION['username'])) {
+    //header("Location: showExe.php");
+    header("refresh:1;url=showExercises.php");
+    die();
+}
+
 include_once "function.php";
 $mess = '';
-
-
 if (!empty($_POST['username']) && !empty($_POST['password'])) {
 
     // print("<pre>" . print_r($_POST, true) . "</pre>");
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $loadJs = loadJson();
     $login = false;
-    foreach ($loadJs as $value) {
-        if ($username == $value[0] && $password == $value[1]) {
+    //$loadJs = loadJson();
+    //$loadJs = [["TamLe","eWr#q9L8i.Ztq#k"],["admin","123456"],["admin1","PDH)n*%YtQ8pmvt"],["12121","%qRd?Q5s4F2)V)?"],["tuan","123456"]];
+//    foreach ($loadJs as $value) {
+//        if ($username == $value['username'] && $password == $value['password']) {
+//            $login = true;
+//            $_SESSION['username'] = $username;
+//            $_SESSION['password'] = $password;
+//            break;
+//        }
+//    }
+//    if (in_array(["username" => $username, "password" => $password], $loadJs)) {
+//        $login = true;
+//        $_SESSION['username'] = $username;
+//        $_SESSION['password'] = $password;
+//    }
+    $loadDB = loadDB();
+    foreach ($loadDB as $value) {
+        if ($username == $value['username'] && $password == $value['password']) {
             $login = true;
             $_SESSION['username'] = $username;
             $_SESSION['password'] = $password;
+            updateLoginDatebyUserToDB($username);
+            if (!empty($_REQUEST['remember']) && $_REQUEST['remember'] == 'on') {
+                setcookie("username", $username, time() + 3600 * 24);  /* expire in 1 day */
+                setcookie("password", md5($password), time() + 3600 * 24);  /* expire in 1 day */
+            }
             break;
         }
     }
-
     if ($login) {
         $mess = "Login successful.";
     } else {
@@ -79,13 +103,15 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
                     <input class="input100" type="password" name="password" placeholder="Password">
                     <span class="focus-input100"></span>
                 </div>
-
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
                         Sign in
                     </button>
                 </div>
-
+                <div class="w-full text-center p-t-27 p-b-239">
+                    <input type="checkbox" name="remember" id="remember" checked/>
+                    <label for="remember-me">Remember me</label>
+                </div>
                 <div class="w-full text-center p-t-27 p-b-239">
 						<span class="txt1">
 							Forgot
@@ -105,8 +131,8 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
             <?php
             if (!empty($mess) && $mess == 'Login successful.') {
                 echo $mess;
-                //header("refresh:1;url=" . str_replace("index.php", "", "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]") . "showExe.php");
-                include "showExe.php";
+                header("refresh:1;url=showExercises.php");
+                //include "showExe.php";
             } else {
                 echo $mess;
             }
@@ -145,6 +171,8 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
 <script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 <script src="js/main.js"></script>
-
+<?php
+ob_flush();
+?>
 </body>
 </html>
