@@ -59,7 +59,6 @@ function insertToDB($params)
     $stmt->bindParam(':login_date', $params['login_date']);
     $stmt->bindParam(':logout_date', $params['logout_date']);
     $stmt->execute($params);
-    print("<pre>" . print_r($stmt, true) . "</pre>");die();
 }
 
 function loadDB()
