@@ -48,13 +48,18 @@ function insertToDB($params)
 {
     $pdo = Database::getConnect();
     $params['time'] = date("H:i:s d-m-Y");
+    $params['login_date'] = '';
+    $params['logout_date'] = '';
 
-    $sql = "INSERT INTO Accounts (username, password, time) VALUES (:username,:password,:time)";
+    $sql = "INSERT INTO Accounts (username, password, time, login_date, logout_date) VALUES (:username,:password,:time,:login_date,:logout_date)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':username', $params['username']);
     $stmt->bindParam(':password', $params['password']);
     $stmt->bindParam(':date', $params['time']);
+    $stmt->bindParam(':login_date', $params['login_date']);
+    $stmt->bindParam(':logout_date', $params['logout_date']);
     $stmt->execute($params);
+    print("<pre>" . print_r($stmt, true) . "</pre>");die();
 }
 
 function loadDB()
