@@ -30,6 +30,10 @@
 <?php
 session_start();
 
+include_once "function.php";
+
+isLogin();
+
 echo '<div class="container">';
 if (isset($_SESSION['username'])) {
     echo 'You are signed in. Welcome: <strong>' . $_SESSION['username'] . "</strong> &nbsp; <a href=\"logout.php\">Logout</a>";

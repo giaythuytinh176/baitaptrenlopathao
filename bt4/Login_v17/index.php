@@ -1,6 +1,7 @@
 <?php
 ob_start();
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,13 +35,17 @@ session_start();
 <body>
 <?php
 
+include_once "function.php";
+
+isLogin();
+
 if (isset($_SESSION['username'])) {
-    //header("Location: showExe.php");
+    //header("Location: showExercises.php");
     header("refresh:1;url=showExercises.php");
     die();
 }
 
-include_once "function.php";
+
 $mess = '';
 if (!empty($_POST['username']) && !empty($_POST['password'])) {
 
@@ -49,9 +54,7 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
     $password = $_POST['password'];
 
     $login = false;
-    //$loadJs = loadJson();
-    //$loadJs = [["TamLe","eWr#q9L8i.Ztq#k"],["admin","123456"],["admin1","PDH)n*%YtQ8pmvt"],["12121","%qRd?Q5s4F2)V)?"],["tuan","123456"]];
-//    foreach ($loadJs as $value) {
+//    foreach (loadJson() as $value) {
 //        if ($username == $value['username'] && $password == $value['password']) {
 //            $login = true;
 //            $_SESSION['username'] = $username;
@@ -59,13 +62,12 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
 //            break;
 //        }
 //    }
-//    if (in_array(["username" => $username, "password" => $password], $loadJs)) {
+//    if (in_array(["username" => $username, "password" => $password], loadJson())) {
 //        $login = true;
 //        $_SESSION['username'] = $username;
 //        $_SESSION['password'] = $password;
 //    }
-    $loadDB = loadDB();
-    foreach ($loadDB as $value) {
+    foreach (loadDB() as $value) {
         if ($username == $value['username'] && $password == $value['password']) {
             $login = true;
             $_SESSION['username'] = $username;

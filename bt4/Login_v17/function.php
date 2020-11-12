@@ -32,6 +32,21 @@ function updateLoginDatebyUserToDB($username)
     $stmt->execute($params);
 }
 
+function isLogin()
+{
+    if (isset($_SESSION['username'])) {
+        return true;
+    } else {
+        if (!empty($_COOKIE['username']) && !empty($_COOKIE["password"])) {
+            $checkExistUsername = loadDBbyUsername($_COOKIE['username']);
+            if (!empty($checkExistUsername['username']) && $_COOKIE["password"] == md5($checkExistUsername['password'])) {
+                $_SESSION['username'] = $checkExistUsername['username'];
+                $_SESSION['password'] = $checkExistUsername['password'];
+            }
+        }
+    }
+}
+
 function updateLogoutDatebyUserToDB($username)
 {
     $pdo = Database::getConnect();
@@ -66,5 +81,15 @@ function loadDB()
     $pdo = Database::getConnect();
     $stmt = $pdo->query("SELECT * FROM Accounts");
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);//FETCH_ASSOC: to Array
+    return $data;
+}
+
+function loadDBbyUsername($username)
+{
+    $pdo = Database::getConnect();
+    $stmt = $pdo->prepare("SELECT * FROM Accounts WHERE username=:username");
+    $stmt->bindParam(':username', $username);
+    $stmt->execute();
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
     return $data;
 }
