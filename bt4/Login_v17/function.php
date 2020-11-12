@@ -34,10 +34,8 @@ function updateLoginDatebyUserToDB($username)
 
 function isLogin()
 {
-    if (isset($_SESSION['username'])) {
-        return true;
-    } else {
-        if (!empty($_COOKIE['username']) && !empty($_COOKIE["password"])) {
+    if (!empty($_COOKIE['username']) && !empty($_COOKIE["password"])) {
+        if (empty($_SESSION['username'])) {
             $checkExistUsername = loadDBbyUsername($_COOKIE['username']);
             if (!empty($checkExistUsername['username']) && $_COOKIE["password"] == md5($checkExistUsername['password'])) {
                 $_SESSION['username'] = $checkExistUsername['username'];
@@ -49,8 +47,7 @@ function isLogin()
 
 function updateLogoutDatebyUserToDB($username)
 {
-    $pdo = Database::getConnect();
-
+    global $pdo;
     $params = ["logout_date" => date("H:i:s d-m-Y"), "username" => $username];
     $sql = "UPDATE Accounts SET logout_date=:logout_date WHERE username=:username";
     $stmt = $pdo->prepare($sql);
@@ -61,7 +58,7 @@ function updateLogoutDatebyUserToDB($username)
 
 function insertToDB($params)
 {
-    $pdo = Database::getConnect();
+    global $pdo;
     $params['time'] = date("H:i:s d-m-Y");
     $params['login_date'] = '';
     $params['logout_date'] = '';
@@ -78,7 +75,7 @@ function insertToDB($params)
 
 function loadDB()
 {
-    $pdo = Database::getConnect();
+    global $pdo;
     $stmt = $pdo->query("SELECT * FROM Accounts");
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);//FETCH_ASSOC: to Array
     return $data;
@@ -86,7 +83,7 @@ function loadDB()
 
 function loadDBbyUsername($username)
 {
-    $pdo = Database::getConnect();
+    global $pdo;
     $stmt = $pdo->prepare("SELECT * FROM Accounts WHERE username=:username");
     $stmt->bindParam(':username', $username);
     $stmt->execute();

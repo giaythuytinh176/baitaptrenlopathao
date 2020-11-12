@@ -25,3 +25,9 @@ class Database extends PDO
         parent::__construct($dns, $settings['database']['username'], $settings['database']['password']);
     }
 }
+
+try {
+    $pdo = Database::getConnect();
+} catch (PDOException $e) {
+    echo 'Connection failed: ' . $e->getMessage();
+}
