@@ -1,8 +1,16 @@
 <?php
 
-interface Duck
-{
-    public function swim($name);
+include_once "CanFly.php";
 
-    public function fly($name);
+class Duck implements CanFly, CanSwim
+{
+    public function fly()
+    {
+        // TODO: Implement fly() method.
+    }
+
+    public function swim()
+    {
+        // TODO: Implement fly() method.
+    }
 }

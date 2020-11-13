@@ -1,8 +1,6 @@
 <?php
 
-include_once "Duck.php";
-
-interface CanFly extends Duck
+interface CanFly
 {
-    public function fly($name);
+    public function fly();
 }

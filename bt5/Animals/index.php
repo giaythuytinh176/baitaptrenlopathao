@@ -22,7 +22,7 @@ function describe($bird) {
 }
 // describe these birds please
 describe(new Penguin);
-echo "---<br>";
+echo "---\n";
 describe(new Dove);
-echo "---<br>";
-//describe(new Duck);  // Cannot instantiate interface 'Duck'
+echo "---\n";
+describe(new Duck);

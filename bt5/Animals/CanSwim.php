@@ -1,8 +1,6 @@
 <?php
 
-include_once "Duck.php";
-
-interface CanSwim extends Duck
+interface CanSwim
 {
-    public function swim($name);
+    public function swim();
 }
