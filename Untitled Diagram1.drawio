@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-02-24T13:14:00.874Z" agent="5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36" etag="DaztgrrhxlSKr2pz_e1k" version="14.4.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-24T13:42:08.153Z" agent="5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36" etag="JA8LTgVZBfHoV91Fkn8h" version="14.4.2" type="github">
   <diagram name="Page-1" id="74e2e168-ea6b-b213-b513-2b3c1d86103e">
     <mxGraphModel dx="2066" dy="1154" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
       <root>
@@ -18,11 +18,29 @@
         <mxCell id="VPGrWWidt9eo6_DiBINe-2" value="Xem danh sách đề thi" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="77e6c97f196da883-3">
           <mxGeometry x="10" y="80" width="130" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="VPGrWWidt9eo6_DiBINe-7" value="&amp;nbsp;Vào 1 đề thi" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="77e6c97f196da883-3">
+          <mxGeometry x="10" y="170" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="VPGrWWidt9eo6_DiBINe-9" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="77e6c97f196da883-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="130" y="200" as="sourcePoint" />
+            <mxPoint x="180" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VPGrWWidt9eo6_DiBINe-10" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="77e6c97f196da883-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="220" as="sourcePoint" />
+            <mxPoint x="130" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="77e6c97f196da883-5" value="System" style="swimlane;html=1;startSize=20;" parent="77e6c97f196da883-1" vertex="1">
           <mxGeometry x="160" y="20" width="160" height="730" as="geometry" />
         </mxCell>
         <mxCell id="VPGrWWidt9eo6_DiBINe-1" value="DB" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="77e6c97f196da883-5">
           <mxGeometry x="30" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VPGrWWidt9eo6_DiBINe-8" value="DB" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="77e6c97f196da883-5">
+          <mxGeometry x="20" y="180" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="77e6c97f196da883-2" value="Admin" style="swimlane;html=1;startSize=20;" parent="77e6c97f196da883-1" vertex="1">
           <mxGeometry x="320" y="20" width="160" height="730" as="geometry" />
